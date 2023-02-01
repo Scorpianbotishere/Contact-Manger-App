@@ -6,10 +6,10 @@ const {
   updateContact,
   deleteContact,
 } = require("../controller/contactController");
-
-router.get("/", getContact);
-router.post("/", createContact);
-router.put("/:id", updateContact);
-router.delete("/:id", deleteContact);
+const { protct } = require("../middleware/authMiddleware");
+router.get("/", protct, getContact);
+router.post("/", protct, createContact);
+router.put("/:id", protct, updateContact);
+router.delete("/:id", protct, deleteContact);
 
 module.exports = router;
